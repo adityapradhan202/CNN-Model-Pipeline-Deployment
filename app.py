@@ -32,7 +32,7 @@ vgg_transform_pipeline = transforms.Compose([
     transforms.ToTensor() 
 ])
 
-loaded_state_dict_vgg = torch.load(f='models/vgg_binary.pth', weights_only=True)
+loaded_state_dict_vgg = torch.load(f='models/vgg_binary.pth', map_location=torch.device('cpu'))
 model_vgg.load_state_dict(loaded_state_dict_vgg)
 
 
@@ -106,6 +106,6 @@ def predict():
 # if __name__ == '__main__':
 #     app.run(host='0.0.0.0', port=5000)
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 10000))
     app.run(host='0.0.0.0', port=port)
