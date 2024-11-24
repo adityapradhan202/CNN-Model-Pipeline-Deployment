@@ -56,7 +56,7 @@ loaded_eff2_model.classifier = nn.Sequential(
     nn.Linear(in_features=1280, out_features=5, bias=True)
 ).to(device=device)
 
-loaded_eff2_dict = torch.load(f=model_save_path, weights_only=True)
+loaded_eff2_dict = torch.load(f=model_save_path, map_location=torch.device('cpu'))
 loaded_eff2_model.load_state_dict(loaded_eff2_dict)
 
 effnet_transform_pipeline = loaded_eff2_weights.transforms()
